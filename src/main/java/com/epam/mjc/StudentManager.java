@@ -7,9 +7,9 @@ public class StudentManager {
 
 
 
-  public Student find(long studentID) throws StudentNotFoundException {
+  public Student find(long studentID) throws IllegalArgumentException {
     if(Student.getValueOf(studentID) == null)
-      throw new StudentNotFoundException("Could not find student with ID " + studentID, new IllegalArgumentException());
+      throw new IllegalArgumentException("Could not find student with ID " + studentID, new IllegalArgumentException());
     return Student.getValueOf(studentID);
   }
 
@@ -20,7 +20,7 @@ public class StudentManager {
       try {
         Student student = manager.find(IDs[i]);
         System.out.println("Student name " + student.getName());
-      } catch (StudentNotFoundException e) {
+      } catch (IllegalArgumentException e) {
         System.out.println(e);
       }
     }
